@@ -18,7 +18,7 @@
     {#if isOpen}
         <div
             transition:scale={{ duration: 200, start: 0.95 }}
-            class="p-4 rounded-md bg-zinc-800 absolute top-20 right-5"
+            class="p-4 rounded-md bg-zinc-800 absolute top-20 right-5 z-999"
         >
             <h1 class="font-medium">{user?.name}</h1>
             <p class="text-sm opacity-80">{user?.email}</p>

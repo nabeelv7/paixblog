@@ -9,7 +9,10 @@
 <header>
     <nav class="flex justify-between items-center p-5">
         <!-- LOGO -->
-        <a href="/" class="text-3xl group flex font-bold w-fit max-md:hidden">
+        <a
+            href="/"
+            class="logo text-3xl group flex font-bold w-fit max-md:hidden"
+        >
             <span class="text-base-content group-hover:text-primary">Paix</span>
             <span class="text-primary group-hover:text-base-content">Blog</span>
         </a>
@@ -18,8 +21,10 @@
             class="flex gap-2 max-md:w-full max-md:justify-between items-center"
         >
             {#if !user}
-                <!-- sign in button -->
-                <SignInButton />
+                <div class="w-full flex justify-end">
+                    <!-- sign in button -->
+                    <SignInButton />
+                </div>
             {:else}
                 <!-- show create blog button if -->
                 {#if user?.email === "nabeelsadiq.dev@gmail.com"}
@@ -30,3 +35,22 @@
         </div>
     </nav>
 </header>
+
+<style>
+    .logo {
+        font-family:
+            "DM Sans",
+            sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            "Open Sans",
+            "Helvetica Neue",
+            sans-serif;
+    }
+</style>
