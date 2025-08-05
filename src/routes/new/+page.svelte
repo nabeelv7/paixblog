@@ -7,13 +7,19 @@
 <main
     class="flex flex-col justify-center items-center max-w-screen-lg mx-auto py-10"
 >
-    <div class="flex flex-col gap-10 w-full px-5">
+    <form
+        method="POST"
+        action="?/createBlog"
+        class="flex flex-col gap-10 w-full px-5"
+    >
         <!-- title -->
         <div class="flex flex-col gap-1 w-full">
             <label for="title">Title</label>
             <input
                 class="py-2 px-3 border rounded-xs border-zinc-800 w-full"
-                type="title"
+                type="text"
+                name="title"
+                value="title bruh"
                 placeholder="Blog title here.."
             />
         </div>
@@ -27,7 +33,8 @@
                     textarea.style.height = textarea.scrollHeight + "px";
                 }}
                 class="py-2 px-3 mt-1 border rounded-xs border-zinc-800 w-full min-h-120"
-                type="body"
+                name="body"
+                value="body bruh hello manwdlkdja"
                 placeholder="Blog content here.."
             ></textarea>
         </div>
@@ -41,5 +48,5 @@
             {/if}
             Submit</button
         >
-    </div>
+    </form>
 </main>

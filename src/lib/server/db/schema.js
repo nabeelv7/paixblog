@@ -88,7 +88,8 @@ export const blogsTable = sqliteTable("blogs", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   title: text("title").notNull(),
   body: text("body").notNull(),
-  userId: text("userId")
+  bodyPreview: text("bodyPreview").notNull(),
+  userEmail: text("userEmail")
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => users.email, { onDelete: "cascade" }),
 });
