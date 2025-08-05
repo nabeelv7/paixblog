@@ -6,7 +6,7 @@
     let isOpen = $state(false);
 </script>
 
-<div>
+<div class="relative">
     <button onclick={() => (isOpen = !isOpen)}>
         <img
             class="rounded-full w-10 ml-3 ring-1 ring-black hover:ring-primary transition duration-250 cursor-pointer"
@@ -18,7 +18,7 @@
     {#if isOpen}
         <div
             transition:scale={{ duration: 200, start: 0.95 }}
-            class="p-4 rounded-md bg-zinc-800 absolute top-20 right-5 z-999"
+            class="p-4 rounded-md bg-zinc-800 absolute top-14 right-0 z-999"
         >
             <h1 class="font-medium">{user?.name}</h1>
             <p class="text-sm opacity-80">{user?.email}</p>

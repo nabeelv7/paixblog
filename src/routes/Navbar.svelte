@@ -2,6 +2,7 @@
     import SignInButton from "$lib/components/SignInButton.svelte";
     import CreateBlogButton from "$lib/components/CreateBlogButton.svelte";
     import UserAvatar from "$lib/components/UserAvatar.svelte";
+    import { page } from "$app/state";
 
     let { user } = $props();
 </script>
@@ -27,8 +28,15 @@
                 </div>
             {:else}
                 <!-- show create blog button if -->
-                {#if user?.email === "nabeelsadiq.dev@gmail.com"}
+                {#if page.url.pathname == "/"}
                     <CreateBlogButton />
+                {:else}
+                    <a
+                        href="/"
+                        class="py-2 px-3 rounded-md hover:opacity-85 transition duration-250 cursor-pointer active:scale-95 bg-primary text-primary-content"
+                    >
+                        &larr; Back
+                    </a>
                 {/if}
                 <UserAvatar {user} />
             {/if}

@@ -12,7 +12,7 @@
     {#if user}
         <h1 class="text-3xl font-bold">hi {user?.name || "wanderer"} 👋</h1>
     {:else}
-        <h1 class="text-3xl font-bold">PaixBlog says hi 👋</h1>
+        <h1 class="text-3xl font-bold">hi wanderer 👋</h1>
     {/if}
     <input
         class="py-2 px-3 rounded-xs md:w-100 w-full border border-zinc-700"
