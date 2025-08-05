@@ -7,7 +7,7 @@
 </script>
 
 <header>
-    <nav class="flex justify-between items-center p-5">
+    <nav class="flex justify-between items-center p-5 max-w-screen-lg mx-auto">
         <!-- LOGO -->
         <a
             href="/"
@@ -35,22 +35,3 @@
         </div>
     </nav>
 </header>
-
-<style>
-    .logo {
-        font-family:
-            "DM Sans",
-            sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            "Open Sans",
-            "Helvetica Neue",
-            sans-serif;
-    }
-</style>
