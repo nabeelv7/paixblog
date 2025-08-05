@@ -14,5 +14,5 @@
 </svelte:head>
 
 <Toaster />
-<Navbar />
+<Navbar user={data?.session?.user} />
 {@render children?.()}

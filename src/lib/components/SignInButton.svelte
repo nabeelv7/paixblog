@@ -26,7 +26,10 @@
     {:else}
         {@render GithubIcon()}
     {/if}
-    Sign in with GitHub
+    <div>
+        <span>Sign in</span>
+        <span class="max-sm:hidden">with Github</span>
+    </div>
 </button>
 
 {#snippet GithubIcon()}
