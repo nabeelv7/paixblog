@@ -1,13 +1,12 @@
 <script>
     import { enhance } from "$app/forms";
     import toast from "svelte-french-toast";
-    import MarkdownBasics from "./MarkdownBasics.svelte";
+    import MarkdownBasics from "$lib/components/MarkdownBasics.svelte";
     import { scale } from "svelte/transition";
 
     const { form } = $props();
 
     $effect(() => {
-        console.log(form);
         if (form?.error) {
             toast.error(form?.message);
         }
@@ -39,6 +38,7 @@
         </div>
         <!-- body -->
         <div class="flex flex-col gap-1 w-full">
+            <!-- content label start -->
             <div class="flex justify-between items-end">
                 <label for="body" class="flex gap-2"
                     >Content (supports <button
@@ -66,6 +66,7 @@
                     </div>
                 {/if}
             </div>
+            <!-- content label end -->
             <textarea
                 value={form?.body || ""}
                 oninput={(event) => {

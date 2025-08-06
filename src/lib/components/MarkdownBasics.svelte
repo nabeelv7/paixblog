@@ -76,7 +76,7 @@
             <td class="p-3 border border-zinc-600">&gt; Blockquote</td>
             <td class="p-3 border border-zinc-600">
                 <blockquote class="border-l-4 pl-4 italic text-gray-600">
-                    Blockquote](https://example.co
+                    Blockquote
                 </blockquote>
             </td>
         </tr>

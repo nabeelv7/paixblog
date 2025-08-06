@@ -39,8 +39,6 @@ export const actions = {
       .from(blogsTable)
       .where(eq(blogsTable.id, id));
 
-    console.log({ blog });
-
     if (!blog) {
       return error(404, "Blog not found.");
     }
