@@ -5,5 +5,6 @@ import { db } from "$lib/server/db";
 
 export const { handle } = SvelteKitAuth({
   adapter: DrizzleAdapter(db),
+  trustHost: true,
   providers: [GitHub],
 });
