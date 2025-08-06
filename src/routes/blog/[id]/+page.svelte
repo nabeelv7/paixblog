@@ -1,4 +1,8 @@
 <script>
+    // markdown
+    import { marked } from "marked";
+    import DOMPurify from "isomorphic-dompurify";
+    // normal
     import { page } from "$app/state";
     import { formatDate } from "$lib/utils/defs.js";
     import DeleteBlogButton from "./DeleteBlogButton.svelte";
@@ -7,6 +11,10 @@
     const blog = data?.blog;
 
     const user = page?.data?.session?.user;
+
+    // parse markdown string from db
+    const rawBlogContent = marked.parse(blog.body);
+    const safeBlogBody = DOMPurify.sanitize(rawBlogContent);
 </script>
 
 <main class="max-w-screen-lg flex flex-col gap-16 mx-auto px-5 py-20">
@@ -35,12 +43,11 @@
             </div>
         {/if}
     </div>
-
     <!-- blog content -->
     <article
         id="article"
         class="leading-loose tracking-wide md:text-xl text-balance break-words"
     >
-        {blog.body}
+        {@html safeBlogBody}
     </article>
 </main>

@@ -1,11 +1,13 @@
 <script>
+    // markdown
+    import { marked } from "marked";
+    import DOMPurify from "isomorphic-dompurify";
+    // normal
     import SignInButton from "$lib/components/SignInButton.svelte";
     import { onMount } from "svelte";
     let { data } = $props();
 
     const user = data?.session?.user;
-
-    onMount(() => console.log(data.blogs));
 </script>
 
 <main
@@ -25,6 +27,9 @@
     <!-- all blogs -->
     <section class="flex flex-col w-full gap-2 mt-10">
         {#each data.blogs as blog}
+            {@const rawBodyPreview = marked.parse(blog.bodyPreview)}
+            {@const safeBodyPreview = DOMPurify.sanitize(rawBodyPreview)}
+
             <a href={`/blog/${blog.id}`}>
                 <div
                     class="w-full space-y-2 text-left py-5 rounded-xs hover:bg-zinc-800 hover:pl-10 transition-all duration-250 ease-out text-wrap"
@@ -36,7 +41,7 @@
                         {blog.title}
                     </h1>
                     <p class="opacity-80 text-balance break-words">
-                        {blog.bodyPreview}..
+                        {@html safeBodyPreview}
                     </p>
                 </div>
             </a>
