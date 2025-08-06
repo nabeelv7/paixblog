@@ -10,7 +10,7 @@
     let blogPreviews = $state([]);
 
     onMount(() => {
-        if (data.blog.length > 0) {
+        if (data.blogs.length > 0) {
             blogPreviews = data.blogs.map((blog) => {
                 const raw = marked.parse(blog.bodyPreview || "");
                 const safe = DOMPurify.sanitize(`<div>${raw}</div>`);
@@ -53,6 +53,6 @@
             <p class="opacity-60 italic mt-10">Loading blogs..</p>
         {/if}
     {:else}
-        <p class="opacity-60 italic mt-10">No blogs found.
+        <p class="opacity-60 italic mt-10">No blogs found.</p>
     {/if}
 </main>
