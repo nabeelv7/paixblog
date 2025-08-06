@@ -1,7 +1,6 @@
 <script>
     import SignInButton from "$lib/components/SignInButton.svelte";
     import { onMount } from "svelte";
-
     let { data } = $props();
 
     const user = data?.session?.user;
@@ -10,7 +9,7 @@
 </script>
 
 <main
-    class="flex max-w-screen-lg mx-auto flex-col gap-5 text-center justify-center items-center py-30 px-5"
+    class="flex max-w-screen-lg mx-auto flex-col gap-5 justify-center py-25 px-5"
 >
     {#if user}
         <h1 class="text-3xl font-bold">hi {user?.name || "wanderer"} 👋</h1>
@@ -24,13 +23,23 @@
     />
 
     <!-- all blogs -->
-    <section class="flex flex-col w-full gap-2">
+    <section class="flex flex-col w-full gap-2 mt-10">
         {#each data.blogs as blog}
-            <div class="w-full space-y-2 text-left py-5 rounded-xs">
-                <h1 class="text-xl font-medium">{blog.title}</h1>
-                <p class="opacity-80 text-balance">{blog.bodyPreview}..</p>
-                <p class="opacity-80 text-sm underline">@{blog.userEmail}</p>
-            </div>
+            <a href={`/blog/${blog.id}`}>
+                <div
+                    class="w-full space-y-2 text-left py-5 rounded-xs hover:bg-zinc-800 hover:pl-10 transition-all duration-250 ease-out"
+                >
+                    <!-- blog details -->
+                    <h1
+                        class="text-xl font-medium text-shadow-xs text-shadow-gray-400"
+                    >
+                        {blog.title}
+                    </h1>
+                    <p class="opacity-80 text-balance">
+                        {blog.bodyPreview}..
+                    </p>
+                </div>
+            </a>
         {/each}
     </section>
 </main>

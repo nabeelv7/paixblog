@@ -1,6 +1,6 @@
 import { db } from "$lib/server/db/index.js";
 import { blogsTable, users } from "$lib/server/db/schema.js";
-import { redirect } from "@sveltejs/kit";
+import { error, fail, redirect } from "@sveltejs/kit";
 import { eq } from "drizzle-orm/gel-core/expressions";
 
 export async function load({ locals }) {
@@ -15,14 +15,31 @@ export const actions = {
     const data = await request.formData();
     const title = data.get("title");
     const body = data.get("body");
-    const bodyPreview = body?.slice(0, 255);
+    const bodyPreview = body?.slice(0, 130);
 
-    console.log({ title, body });
+    // check values
+    if (!title) {
+      return fail(400, {
+        error: true,
+        message: "please add a title",
+        title,
+        body,
+      });
+    }
+
+    if (!body) {
+      return fail(400, {
+        error: true,
+        message: "please add blog content",
+        title,
+        body,
+      });
+    }
 
     const { user } = await locals.auth();
 
     if (!user) {
-      // error()
+      return error(401, "You are not authenticated.");
     }
 
     await db.insert(blogsTable).values({
@@ -32,6 +49,6 @@ export const actions = {
       userEmail: user.email,
     });
 
-    console.log("YEAHHH");
+    redirect(307, "/");
   },
 };

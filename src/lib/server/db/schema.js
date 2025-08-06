@@ -4,6 +4,7 @@ import {
   text,
   primaryKey,
 } from "drizzle-orm/sqlite-core";
+import { sql } from "drizzle-orm";
 
 export const users = sqliteTable("user", {
   id: text("id")
@@ -92,4 +93,10 @@ export const blogsTable = sqliteTable("blogs", {
   userEmail: text("userEmail")
     .notNull()
     .references(() => users.email, { onDelete: "cascade" }),
+  createdAt: text("created_at")
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: text("updated_at")
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
 });
