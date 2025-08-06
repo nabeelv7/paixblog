@@ -27,7 +27,7 @@
         {#each data.blogs as blog}
             <a href={`/blog/${blog.id}`}>
                 <div
-                    class="w-full space-y-2 text-left py-5 rounded-xs hover:bg-zinc-800 hover:pl-10 transition-all duration-250 ease-out"
+                    class="w-full space-y-2 text-left py-5 rounded-xs hover:bg-zinc-800 hover:pl-10 transition-all duration-250 ease-out text-wrap"
                 >
                     <!-- blog details -->
                     <h1
@@ -35,7 +35,7 @@
                     >
                         {blog.title}
                     </h1>
-                    <p class="opacity-80 text-balance">
+                    <p class="opacity-80 text-balance break-words">
                         {blog.bodyPreview}..
                     </p>
                 </div>

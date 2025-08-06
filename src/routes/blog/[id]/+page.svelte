@@ -39,7 +39,7 @@
     <!-- blog content -->
     <article
         id="article"
-        class="leading-loose tracking-wide md:text-xl text-balance"
+        class="leading-loose tracking-wide md:text-xl text-balance break-words"
     >
         {blog.body}
     </article>
