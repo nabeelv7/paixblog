@@ -23,15 +23,8 @@
 >
     <!-- Greeting -->
     <h1 class="text-3xl font-bold">
-        hi {user?.name || "wanderer"} 👋
+        yo {user?.name || "wanderer"} <span class="animate-pulse">✌️</span>
     </h1>
-
-    <!-- Search Input -->
-    <input
-        class="py-2 px-3 rounded-xs md:w-100 w-full border border-zinc-700"
-        type="text"
-        placeholder="Search Blogs.."
-    />
 
     <!-- Blog List (client-only after onMount) -->
     {#if blogPreviews.length > 0}
