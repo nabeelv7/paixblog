@@ -1,6 +1,8 @@
 <script>
     import { enhance } from "$app/forms";
     import toast from "svelte-french-toast";
+    import MarkdownBasics from "./MarkdownBasics.svelte";
+    import { scale } from "svelte/transition";
 
     const { form } = $props();
 
@@ -10,6 +12,8 @@
             toast.error(form?.message);
         }
     });
+
+    let isTooltipOpen = $state(false);
 </script>
 
 <main
@@ -35,7 +39,33 @@
         </div>
         <!-- body -->
         <div class="flex flex-col gap-1 w-full">
-            <label for="body">Content</label>
+            <div class="flex justify-between items-end">
+                <label for="body" class="flex gap-2"
+                    >Content (supports <button
+                        onclick={() => (isTooltipOpen = !isTooltipOpen)}
+                        type="button"
+                        href="/"
+                        class="text-blue-400 underline cursor-help flex"
+                        >markdown <span class="text-red-500">*</span></button
+                    >)</label
+                >
+                <!-- tooltip -->
+                {#if isTooltipOpen}
+                    <div
+                        transition:scale={{ duration: 200, start: 0.95 }}
+                        class="p-5 bg-slate-800 md:w-130 w-[calc(100vw-40px)] rounded-md fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-6 shadow-md shadow-gray-700"
+                    >
+                        <MarkdownBasics />
+                        <div class="w-full flex items-center justify-end">
+                            <button
+                                class="py-2 px-3 bg-slate-800 hover:bg-slate-700 cursor-pointer rounded-md active:scale-95 transition-all duration-250 border border-gray-600"
+                                onclick={() => (isTooltipOpen = false)}
+                                >Close</button
+                            >
+                        </div>
+                    </div>
+                {/if}
+            </div>
             <textarea
                 value={form?.body || ""}
                 oninput={(event) => {

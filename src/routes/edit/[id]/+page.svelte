@@ -56,7 +56,7 @@
             type="submit"
             class="py-2 flex justify-center items-center gap-2 px-3 rounded-md sm:w-fit w-full hover:opacity-85 transition duration-250 cursor-pointer border border-primary text-base-content hover:bg-primary hover:text-primary-content"
         >
-            Submit</button
+            Save Edit</button
         >
     </form>
 </main>
