@@ -12,6 +12,12 @@ export async function load({ locals }) {
 
 export const actions = {
   createBlog: async ({ request, locals }) => {
+    const { user } = await locals.auth();
+
+    if (!user) {
+      return error(401, "You are not authenticated.");
+    }
+
     const data = await request.formData();
     const title = data.get("title");
     const body = data.get("body");
@@ -34,12 +40,6 @@ export const actions = {
         title,
         body,
       });
-    }
-
-    const { user } = await locals.auth();
-
-    if (!user) {
-      return error(401, "You are not authenticated.");
     }
 
     await db.insert(blogsTable).values({

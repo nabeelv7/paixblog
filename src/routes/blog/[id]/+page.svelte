@@ -1,6 +1,7 @@
 <script>
     import { page } from "$app/state";
     import { formatDate } from "$lib/utils/defs.js";
+    import DeleteBlogButton from "./DeleteBlogButton.svelte";
 
     let { data } = $props();
     const blog = data?.blog;
@@ -24,14 +25,13 @@
 
         <!-- blog controls -->
         {#if user?.email === blog.userEmail}
-            <div>
-                <button
-                    class="py-2 px-3 hover:bg-zinc-800 rounded-xs cursor-pointer"
-                    >Edit</button
+            <div class="flex gap-2">
+                <a
+                    href={`/edit/${blog.id}`}
+                    class="py-2 px-3 bg-zinc-800 hover:bg-zinc-700 rounded-xs cursor-pointer"
+                    >Edit</a
                 >
-                <button class="py-2 px-3 bg-red-700 rounded-xs cursor-pointer"
-                    >Delete</button
-                >
+                <DeleteBlogButton id={blog.id} />
             </div>
         {/if}
     </div>
